@@ -16,15 +16,14 @@ public class Bitmap {
 
         for (int i = 0; i < width; i++){
             for (int j = 0; j < height; j++) {
-                Color pixel = new Color(this.image.getRGB(i, j));
+                Color fromSource = new Color(this.image.getRGB(i, j));
 
-                int red = pixel.getRed();
-                int green = pixel.getGreen();
-                int blue = pixel.getBlue();
-                int alpha = pixel.getAlpha();
+                int red = fromSource.getRed();
+                int green = fromSource.getGreen();
+                int blue = fromSource.getBlue();
 
             int grey = (red + green + blue ) / 3;
-            Color greyColor = new Color ( grey, grey, grey, alpha);
+            Color greyColor = new Color ( grey, grey, grey);
 
             image.setRGB(i, j, greyColor.getRGB());
             }

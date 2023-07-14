@@ -11,24 +11,24 @@ import javax.imageio.ImageIO;
 public class App {
     public static void main(String[] args) throws IOException {
         if(args.length < 3) {
-            System.out.println("Usage: ./gradlew run --args InputPath OutputPath TransformOperation");
+            System.out.println("Usage: ./gradlew run --args InputPath OutputName TransformOperation");
             System.exit(1);
         }
-        File inputFile = new File(args[0]);
-        File outputFile = new File(args[1]);
-        String transformName = args[2];
+        File input = new File(args[0]);
+        File output = new File(args[1]);
+        String transformOperation = args[2];
 
-        BufferedImage inputImage = new ImageIO.read(inputFile);
+        BufferedImage inputImage = ImageIO.read(input);
             Bitmap bitmap = new Bitmap(inputImage);
 
-            if (transformName.equals("greyscale")) {
+            if (transformOperation.equals("greyscale")) {
                 bitmap.greyscale();
             } else {
                 System.out.println("Transform Not a Method");
                 System.exit(1);
             }
-            ImageIO.write(bitmap.toBufferedImage(), "bmp", outputFile);
+            ImageIO.write(bitmap.toBufferedImage(), "bmp", output);
     }
 }
 
-    C:\Users\Davey's PCSDocuments\CODE_FELLOWS\401java\code-401\labs\Apps\bitmap-transformer\app\src\main\resources\baldy-8bit.bmp
+//./gradlew run --args app/src/main/resources/baldy-8bit.bmp outputFile greyscale
